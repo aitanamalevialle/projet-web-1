@@ -1,0 +1,55 @@
+@media (max-width: 768px) {
+    main {
+        flex-basis: 100%;
+    }
+    
+    h1 {
+        font-size: var(--police-l);
+    }
+
+    .main-menu ul, .secondary-menu,
+    .filter-bar, .search, .newsletter, section .vedette {
+        display: none;
+    }
+
+    .btn-menu-icon, .btn-filter-icon {
+        display: block;
+        background-color: transparent;
+    }
+
+    .btn-filter-icon {
+        color: var(--couleur-texte);
+    }
+    
+    .btn-menu-icon {
+        color: var(--couleur-principale);
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        flex-basis: 100%;
+    }
+    
+    h1 {
+        font-size: var(--police-l);
+    }
+
+    .main-menu ul, .secondary-menu,
+    .filter-bar, .search, .newsletter, section .vedette {
+        display: none;
+    }
+
+    .btn-menu-icon, .btn-filter-icon {
+        display: block;
+        background-color: transparent;
+    }
+    
+    .btn-filter-icon {
+        color: var(--couleur-texte);
+    }
+    
+    .btn-menu-icon {
+        color: var(--couleur-principale);
+    }
+}

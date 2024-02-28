@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Utilisateurs{% endblock %}
+
+{% block body %}
+
+<main class="compte">
+    <h1>Mon compte</h1>
+    <nav class="menu">
+        <ul>
+            <li><a href="{{ url_racine }}compte" role="menuitem" aria-haspopup="false">Mes infos</a></li>
+        </ul>
+    </nav>
+    <section>
+        <table class="tableau">
+            <tr>
+                <th>Nom (complet)</th>
+                <th>Courriel</th>
+                <th>Privilège</th>
+            </tr>
+            {% for utilisateur in utilisateurs %}
+                <tr>
+                    <td>{{ utilisateur.nom }}</a></td>
+                    <td>{{ utilisateur.courriel }}</td>
+                    <td>{{ utilisateur.privilege_id }}</td>
+                    <td>
+                        <form action="{{ url_racine }}utilisateur/delete" method="post">
+                            <input type="hidden" name="id" value="{{ utilisateur.id }}">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+    <a href="{{ url_racine }}utilisateur/create">Ajouter un utilisateur</a>
+</main>
+
+{% endblock %}

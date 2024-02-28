@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Modification timbre{% endblock %}
+
+{% block body %}
+
+<main class="creation"
+    <section>
+        <h1>Mon compte</h1>
+        <nav class="menu">
+            <ul>
+                <li><a href="{{ url_racine }}compte" role="menuitem" aria-haspopup="false">Mes infos</a></li>
+                <li><a href="{{ url_racine }}enchere" role="menuitem" aria-haspopup="false">Mes enchères</a></li>
+                <li><a href="{{ url_racine }}timbre" role="menuitem" aria-haspopup="false">Mes timbres</a></li>
+                <li><a href="{{ url_racine }}mise" role="menuitem" aria-haspopup="false">Mes mises</a></li>
+            </ul>
+        </nav>
+    </section>
+    <section>
+        <h2>Modification de timbre</h2>
+        <form action="{{ url_racine }}timbre/update" method="post">
+            <span class="error">{{ errors | raw }}</span>
+            <input type="hidden" name="id" value="{{ timbre.id }}">
+            <label for="nom">Nom*</label>
+            <input type="text" name="nom" id="nom" value="{{ timbre.nom }}" required>
+            <label for="date_creation">Date de création*</label>
+            <input type="date" name="date_creation" id="date_creation" value="{{ timbre.date_creation }}" required>            
+            <label for="couleurs">Couleur(s) dominante(s)*</label>
+            <input type="text" name="couleurs" id="couleurs" value="{{ timbre.couleurs }}" required>
+            <label for="tirage">Tirage*</label>
+            <input type="number" name="tirage" id="tirage" value="{{ timbre.tirage }}" required>
+            <label for="dimensions">Dimensions*</label>
+            <input type="text" name="dimensions" id="dimensions" value="{{ timbre.dimensions }}" required>
+            <label for="certifie">Certifie*</label>
+            <select id="certifie" name="certifie">
+                <option value="" {% if timbre.certifie is null %}selected{% endif %}>Sélectionner une réponse</option>
+                <option value="1" {% if timbre.certifie == 1 %}selected{% endif %}>Oui</option>
+                <option value="0" {% if timbre.certifie == 0 %}selected{% endif %}>Non</option>
+            </select>
+            <label for="pays">Pays*</label>
+            <input type="text" name="pays" id="pays" value="{{ timbre.pays }}" required>
+            <label for="origine_id">Région d'origine*</label>
+            <select name="origine_id" required>
+                <option value="">Sélectionner une région d'origine</option>
+                {% for origine in origines %}
+                    <option value="{{ origine.id }}" {% if origine.id == timbre.origine_id %} selected {% endif %}>{{ origine.origine }}</option>
+                {% endfor %}
+            </select>
+            <label for="condition_id">Condition*</label>
+            <select name="condition_id" required>
+                <option value="">Sélectionner une condition</option>
+                {% for condition in conditions %}
+                    <option value="{{ condition.id }}" {% if condition.id == timbre.condition_id %} selected {% endif %}>{{ condition.condition }}</option>
+                {% endfor %}
+            </select>
+            <input type="hidden" name="utilisateur_id" value="{{ utilisateur_id }}">
+            <button type="submit">Enregistrer</button>
+        </form>
+    </section>
+</main>
+
+{% endblock %}

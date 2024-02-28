@@ -1,0 +1,99 @@
+.timbre {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+    & .grille {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding-bottom: var(--espace-m);
+        flex-grow: 1;
+    
+        & .grille-item {
+    
+        background-color: var(--couleur-item);
+        padding: var(--espace-m);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+    
+            & .image {
+                flex-grow: 0;
+                max-width: 60%;
+                text-align: center;
+                
+                & img {
+                    max-width: 80%;
+                    max-height: auto;
+                }
+            }
+            
+            & .contenu {
+            flex-grow: 1; 
+                & p, h3 {
+                color: var(--couleur-principale);
+                }
+                & h3 {
+                    padding-top: var(--espace-m);
+                    font-weight:bold;
+                }
+                & .description {
+                    font-size: var(--police-s);
+                }
+            }
+        }
+    }
+    
+    .vedette {
+        display: flex;
+        padding: var(--espace-l);
+        align-items: center;
+    
+        & .fleche {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+    
+        & .fleche:hover {
+            color: var(--couleur-accent);
+        }
+    
+        & .vedette-item {
+            flex: 0 0 25%;
+            box-sizing: border-box; 
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+    
+            & .image {
+                flex-grow: 0;
+                max-width: 60%;
+                text-align: center;
+                
+                & img {
+                    max-width: 80%;
+                    max-height: auto;
+                }
+            }
+            
+            & h2 {
+                color: var(--couleur-secondaire);
+                text-align: center;
+            }
+    
+            .btn-mise:hover {
+                background-color: var(--couleur-accent);
+                color: var(--couleur-principale);
+            }
+        }
+        
+    }
+
+}

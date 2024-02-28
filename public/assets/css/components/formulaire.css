@@ -1,0 +1,32 @@
+form {   
+    h2 {
+        text-align: center;
+    }
+
+    & label, h2 {
+        color: var(--couleur-principale);
+    }
+
+    & input {
+        /* margin-right: var(--espace-m); */
+        left:0;
+    }
+}
+
+.creation {
+
+    form {
+        margin-bottom: var(--espace-xl);
+    }
+
+    label, input, select {
+        color: var(--couleur-secondaire);
+        display: block;
+        margin-bottom: var(--espace-l);
+    }
+
+    h2 {
+        color: var(--couleur-secondaire);
+    }
+
+}

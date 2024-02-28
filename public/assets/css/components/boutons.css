@@ -1,0 +1,54 @@
+button {
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-principale);
+    border: none;
+    cursor: pointer;
+    padding: var(--espace-m);
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s; 
+}
+
+[type="reset"]:hover, [type="submit"]:hover{
+    background-color: var(--couleur-accent);
+}
+
+.btn-mise, .btn-miser, .btn-favori {
+    font-size: var(--police-m);
+    margin-top: var(--espace-m);
+}
+
+.btn-mise i {
+    padding-right: var(--espace-s);
+}
+
+.btn-newsletter {
+    padding-right: var(--espace-m);
+}
+
+.btn-favori {
+    background-color: transparent;
+}
+
+.btn-mise:hover, .btn-miser:hover, .btn-newsletter {
+    background-color: var(--couleur-principale);
+    color: var(--couleur-secondaire);
+}
+
+.btn-favori:hover {
+    color: var(--couleur-secondaire);
+}
+
+.btn-newsletter:hover {
+    background-color: var(--couleur-accent);
+    color: var(--couleur-principale);
+}
+
+.btn-menu-icon, .btn-filter-icon {
+    display: none;
+}
+
+.btn-sort-icon {
+    background-color: transparent;
+    color: var(--couleur-texte);
+}

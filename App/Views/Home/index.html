@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Accueil{% endblock %}
+
+{% block body %}
+
+<main class="accueil">
+    <div class="banniere"></div>
+    <section>
+        <h2 class="coeur">Coups de <i class="fa-solid fa-heart"></i> du Lord</h2>
+        <div class="list">
+            <div class="item">
+                <img src="{{ url_racine }}/assets/img/timbre.webp" loading="lazy" alt="timbre Stampee">
+                <h2>Lord Stampee</h2>
+                <div class="text">
+                    <p><span>Début enchère :</span> 2024-01-01</p>
+                    <p><span>Fin enchère :</span> 2024-01-17</p>
+                    <p><span>Mise actuelle :</span> 1000 $</p>
+                </div>
+                <button class="btn-mise"><i class="fa-solid fa-gavel fa-lg"></i>Miser</button>
+            </div>
+            <div class="item">
+                <img src="{{ url_racine }}/assets/img/timbre-cheval.webp" loading="lazy" alt="timbre Stampee">
+                <h2>Lord chevalier</h2>
+                <div class="text">
+                    <p><span>Début enchère :</span> 2024-01-05</p>
+                    <p><span>Fin enchère :</span> 2024-01-19</p>
+                    <p><span>Mise actuelle :</span> 2000 $</p>
+                </div>
+                <button class="btn-mise"><i class="fa-solid fa-gavel fa-lg"></i>Miser</button>
+            </div>
+            <div class="item">
+                <img src="{{ url_racine }}/assets/img/timbre-lord.webp" loading="lazy" alt="timbre Stampee">
+                <h2>Lord</h2>
+                <div class="text">
+                    <p><span>Début enchère :</span> 2024-01-07</p>
+                    <p><span>Fin enchère :</span> 2024-01-21</p>
+                    <p><span>Mise actuelle :</span> 3000 $</p>
+                </div>
+                <button class="btn-mise"><i class="fa-solid fa-gavel fa-lg"></i>Miser</button>
+            </div>
+            <div class="item">
+                <img src="{{ url_racine }}/assets/img/timbre.webp" loading="lazy" alt="timbre Stampee">
+                <h2>Lord Stampee</h2>
+                <div class="text">
+                    <p><span>Début enchère :</span> 2024-01-10</p>
+                    <p><span>Fin enchère :</span> 2024-01-31</p>
+                    <p><span>Mise actuelle :</span> 4000 $</p>
+                </div>
+                <button class="btn-mise"><i class="fa-solid fa-gavel fa-lg"></i>Miser</button>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

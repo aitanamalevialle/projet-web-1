@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Catalogue{% endblock %}
+
+{% block body %}
+
+<main class="page-catalogue">
+    <section class="filter-section" data-js-filtres>
+        <h2>Filtres</h2>
+        <button class="btn-filter-icon"><i class="fa-solid fa-filter fa-lg"></i></button>
+        <div class="filter-bar">
+            <div class="filter-group region-group">
+                <label for="region" title="Région géographique"><i class="fa-solid fa-earth-americas fa-lg"></i></label>
+                <select name="region" id="region">
+                    <option value="">Tous</option>
+                    <option value="amerique">Amérique</option>
+                    <option value="afrique">Afrique</option>
+                    <option value="asie">Asie</option>
+                    <option value="europe">Europe</option>
+                    <option value="oceanie">Océanie</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="condition" title="Condition"><i class="fa-solid fa-address-card fa-lg"></i></label>
+                <select name="condition" id="condition">
+                    <option value="">Tous</option>
+                    <option value="parfaite">Parfaite</option>
+                    <option value="excellente">Excellente</option>
+                    <option value="bonne">Bonne</option>
+                    <option value="moyenne">Moyenne</option>
+                    <option value="endommagé">Endommagé</option>
+                </select>
+            </div>
+            <div class="filter-group date-group">
+                <label for="date-debut"><i class="fa-solid fa-calendar fa-lg" title="Début"></i></label>
+                <input type="date" id="date-debut" name="date-debut">
+                <label for="date-fin"><i class="fa-solid fa-calendar-week fa-lg" title="Fin"></i></label>
+                <input type="date" id="date-fin" name="date-fin">
+            </div>
+            <div class="filter-group price-group">
+                <label for="prix" title="Prix"><i class="fa-solid fa-dollar-sign fa-lg"></i></label>
+                <select name="prix" id="prix">
+                    <option value="">Tous</option>
+                    <option value="0-500">$0 - $500</option>
+                    <option value="500-1000">$500 - $1000</option>
+                    <option value="1000-1500">$1000 - $1500</option>
+                    <option value="1500-2000">$1500 - $2000</option>
+                    <option value="2000-2500">$2000 - $2500</option>
+                    <option value="2500-3000">$2500 - $3000</option>
+                    <option value="3000-3500">$3000 - $3500</option>
+                    <option value="3500-4000">$3500 - $4000</option>
+                    <option value="4000">> $4000</option>
+                </select>
+            </div>
+            <button type="reset">Réinitialiser</button>
+        </div>
+        <button class="btn-sort-icon"><i class="fa-solid fa-sort fa-lg"></i></button>   
+    </section>
+    <section>
+        <div class="list">
+            {% for enchere in encheres %}
+            <div class="item">
+                <img src="{{ url_racine }}/assets/img/{{ enchere.nom_image }}" loading="lazy" alt="timbre Stampee">
+                <h2>{{ enchere.nom_timbre }}</h2>
+                <div class="text">
+                    <p><span>Début enchère :</span> {{ enchere.date_debut }}</p>
+                    <p><span>Fin enchère :</span> {{ enchere.date_fin }}</p>
+                </div>
+                <a href="{{ url_racine }}enchere/show?enchere_id={{ enchere.id }}">
+                    <button class="btn-mise"><i class="fa-solid fa-gavel fa-lg"></i>Miser</button>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</main>
+
+{% endblock %}

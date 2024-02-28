@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Connexion{% endblock %}
+
+{% block body %}
+
+<main class="creation">
+    <section>
+        <h2>Connexion</h2>
+        <form method="post" action="{{ url_racine }}login/auth">
+            <span class="error">{{ errors | raw }}</span>
+            <label for="email">Courriel</label>
+            <input type="email" name="courriel" id="email" placeholder="exemple@gmail.com" required>
+            <label for="mot_de_passe">Mot de passe</label>
+            <input type="password" name="mot_de_passe" id="mot_de_passe" required>
+            <button type="submit">Se connecter</button>
+        </form>
+    </section>
+</main>
+
+{% endblock %}

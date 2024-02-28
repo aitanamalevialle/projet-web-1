@@ -1,0 +1,26 @@
+.filter-section {
+    display: flex;
+/*     padding-bottom: 0; */
+    justify-content:  center;
+}
+
+.filter-group, .filter-bar {
+    display: flex;
+    align-items: center;
+}
+
+.filter-icon {
+    display: none; 
+}
+
+label, select, input {
+    margin:  var(--espace-s);
+}
+
+select {
+    accent-color: var(--couleur-accent);
+}
+    
+select:focus {
+    outline: 2px solid var(--couleur-accent);
+}

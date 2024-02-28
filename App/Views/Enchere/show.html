@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Timbre{% endblock %}
+
+{% block body %}
+
+<main class="timbre">
+    <section>
+        <div class="grille">
+            <div class="grille-item">              
+                <figure class="image">
+                    <img src="{{ url_racine }}assets/img/{{ enchere.nom_image }}" loading="lazy" alt="timbre">
+                </figure>
+                <div class="contenu">
+                    
+                    <h2>{{ timbre.nom }}
+                        {% if session.privilege == 1 or session.privilege == 2 %}
+                        <form method="post" action="/stampee/public/enchere/favoris">
+                            <input type="hidden" name="enchere_id" value="{{ enchere.id }}">
+                            <button type="submit" class="btn-favori"><i class="fa-solid fa-star fa-lg"></i></button>
+                        </form>                        
+                        {% endif %}
+                    </h2>
+                    <p><span>Date de création :</span> {{ timbre.date_creation }}</p>
+                    <p><span>Couleur(s) dominante(s) :</span> {{ timbre.couleurs }}</p>
+                    <p><span>Tirage :</span> {{ timbre.tirage }}</p>
+                    <p><span>Dimensions :</span> {{ timbre.dimensions }}</p>
+                    <p><span>Origine :</span> {{ timbre.pays }}</p>
+                    {% if condition %}
+                        <p><span>Condition :</span> {{ condition.condition }}</p>
+                    {% endif %}
+                    <p><span>Certification :</span> {{ timbre.certifie ? 'oui' : 'non' }}</p>
+                    <p><span>Début enchère :</span> {{ enchere.date_debut }}</p>
+                    <p><span>Fin enchère :</span> {{ enchere.date_fin }}</p>
+                    <p><span>Favoris du Lord :</span> {{ enchere.coup_de_coeur ? 'oui' : 'non' }}</p>
+                    <p><span>Prix initial :</span> {{ enchere.prix_plancher }}</p>
+                    <p><span>Prix actuel :</span> {{ derniereMise|default('Aucune mise') }}</p>
+                    <p class="description">Découvrez l'exquise collection de timbres de Lord Reginald Stampee III, un éminent aristocrate anglais dont la passion pour la philatélie transcende les époques. Chaque timbre de cette collection soigneusement préservée raconte une histoire riche et captivante, témoignant de l'héritage culturel et historique de diverses régions du monde.</p>
+                    {% if erreurMise is defined %}
+                        <div class="erreur">{{ erreurMise }}</div>
+                    {% endif %}
+                    {% if not utilisateurAcreerEnchere %}
+                        {% if session.privilege == 1 or session.privilege == 2 %}
+                            <form method="post" action="/stampee/public/enchere/mise">
+                                <input type="hidden" name="enchere_id" value="{{ enchere.id }}">
+                                <label for="prix_actuel"></label>
+                                <input type="number" id="prix_actuel" name="prix_actuel" placeholder="Miser" value="{{ miseValue }}" required min="{{ minMise + 1 }}">
+                                <button class="btn-miser" type="submit"><i class="fa-solid fa-gavel fa-lg"></i></button>
+                            </form>
+                        {% else %}
+                            <h3>Connectez-vous pour miser.</h3>
+                        {% endif %}
+                    {% else %}
+                        <h3>Vous ne pouvez pas miser, car vous avez créé cette enchère.</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+<!--     <section>
+        <div class="vedette">
+            <i class="fa-solid fa-arrow-left fa-lg fleche"></i>
+            <div class="vedette-item">
+                <h2>Lot de timbres #1</h2>
+                <figure class="image">
+                    <img src="{{ url_racine }}/assets/img/timbre.webp" loading="lazy" alt="timbre Stampee"/>
+                </figure>
+                <button class="btn-mise"><i class="fa-solid fa-gavel"></i>$1000</button>
+            </div>
+            <div class="vedette-item">
+                <h2>Lot de timbres #3</h2>
+                <figure class="image">
+                    <img src="{{ url_racine }}/assets/img/timbre-lord.webp" loading="lazy" alt="timbre Stampee"/>
+                </figure>
+                <button class="btn-mise"><i class="fa-solid fa-gavel"></i>$1000</button>
+            </div>
+            <div class="vedette-item">
+                <h2>Lot de timbres #5</h2>
+                <figure class="image">
+                    <img src="{{ url_racine }}/assets/img/timbre.webp" loading="lazy" alt="timbre Stampee"/>
+                </figure>
+                <button class="btn-mise"><i class="fa-solid fa-gavel"></i>$1000</button>
+            </div>
+            <div class="vedette-item">
+                <h2>Lot de timbres #7</h2>
+                <figure class="image">
+                    <img src="{{ url_racine }}/assets/img/timbre-lord.webp" loading="lazy" alt="timbre Stampee"/>
+                </figure>
+                <button class="btn-mise"><i class="fa-solid fa-gavel"></i>$1000</button>
+            </div>
+            <i class="fa-solid fa-arrow-right fa-lg fleche"></i>
+        </div>
+    </section> -->
+</main>
+
+{% endblock %}

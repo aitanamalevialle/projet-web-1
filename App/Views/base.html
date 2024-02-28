@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenue sur le site d'enchères de timbres de Lord Stampee.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{{ url_racine }}assets/css/styles.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header class="header-container">
+        <nav class="secondary-menu">
+            <ul role="menubar">
+                <li><a href="#" role="menuitem" aria-haspopup="false">À propos de Lord Reginald Stampee III</a></li>
+                <li><a href="#" role="menuitem" aria-haspopup="false">Fonctionnement de la plateforme</a></li>
+                <li><a href="#" role="menuitem" aria-haspopup="false">Contactez-nous</a></li>
+                <li><a href="#" role="menuitem" aria-haspopup="false">Termes et conditions</a></li>
+                {% if guest %}
+                <li><a href="{{ url_racine }}utilisateur/create" role="menuitem" aria-haspopup="false"><i class="fa-solid fa-user-plus fa-lg"></i></a></li>
+                <li><a href="{{ url_racine }}login" role="menuitem" aria-haspopup="false"><i title="Connexion" class="fa-solid fa-circle-user fa-lg"></i></a></li>
+                {% else %}
+                <li><a href="{{ url_racine }}compte"><i title="Connexion" class="fa-solid fa-house-user fa-lg"></i></a></li>
+                <li><a href="{{ url_racine }}login/logout"><i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <h1>Lord Stampee</h1>
+        <button class="btn-menu-icon"><i class="fa-solid fa-bars fa-lg"></i></button>
+        <nav class="main-menu">
+            <ul role="menubar">
+                <li><a href="{{ url_racine }}" role="menuitem" aria-haspopup="false">Accueil</a></li>
+                <li><a href="{{ url_racine }}catalogue" role="menuitem" aria-haspopup="false">Catalogue</a></li>
+                <li><a role="menuitem" aria-haspopup="true">Actualités</a>
+                    <ul class="dropdown">
+                        <li><a href="#" role="menuitem" aria-haspopup="false">Timbres</a></li>
+                        <li><a href="#" role="menuitem" aria-haspopup="false">Enchères</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="search">       
+            <input type="search" id="search" placeholder="Rechercher"/>
+            <label for="search"><i class="fa-solid fa-magnifying-glass fa-lg"></i></label> 
+        </div>
+    </header> 
+    {% block body %}
+    {% endblock %}
+    <footer class="footer-container">
+        <figure class="logo">
+            <img src="{{ url_racine }}/assets/img/logo/logo.webp" loading="lazy" alt="logo Stampee"/>
+        </figure>
+        <form action="#" method="post" class="newsletter">
+            <h2>Abonnez-vous à notre infolettre</h2>
+            <label for="email"><i class="fa-solid fa-envelope fa-lg"></i></label>
+            <input type="email" id="email" name="email" placeholder="exemple@gmail.com">
+            <button type="submit" class="btn-newsletter">Abonner</button>
+        </form>
+        <div class="social">
+            <i class="fa-brands fa-square-facebook fa-2xl"></i>
+            <i class="fa-brands fa-x-twitter fa-2xl"></i>
+            <i class="fa-brands fa-instagram fa-2xl"></i>
+        </div>
+    </footer>
+</body>
+</html>

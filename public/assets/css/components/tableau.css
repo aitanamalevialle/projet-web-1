@@ -1,0 +1,25 @@
+.tableau {
+
+    h2 {
+        color: var(--couleur-secondaire);
+    }
+    
+    table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--espace-m);
+    }
+
+    th, td {
+        border: 2px solid var(--couleur-secondaire);
+        padding: var(--espace-m) var(--espace-l);  
+        text-align: center;
+        align-items: center;
+        white-space: nowrap;
+        word-wrap: break-word;
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+    }
+    
+}

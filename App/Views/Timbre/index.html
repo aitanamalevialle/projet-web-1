@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Mes timbres{% endblock %}
+
+{% block body %}
+
+<main class="compte">
+    <h1>Mon compte</h1>
+    <nav class="menu">
+        <ul>
+            <li><a href="{{ url_racine }}compte" role="menuitem" aria-haspopup="false">Mes infos</a></li>
+            <li><a href="{{ url_racine }}enchere" role="menuitem" aria-haspopup="false">Mes enchères</a></li>
+            <li><a href="{{ url_racine }}timbre" role="menuitem" aria-haspopup="false">Mes timbres</a></li>
+            <li><a href="{{ url_racine }}mise" role="menuitem" aria-haspopup="false">Mes mises</a></li>
+            <li><a href="{{ url_racine }}favoris" role="menuitem" aria-haspopup="false">Mes favoris</a></li>
+        </ul>
+    </nav>
+    <section>
+        <table class="tableau">
+            <tr>
+                <th>Nom</th>
+                <th>Date de création</th>
+                <th>Couleur(s) dominante(s)</th>
+                <th>Tirage</th>
+                <th>Dimensions</th>
+                <th>Certifie</th>
+                <th>Pays</th>
+                <th>Modifier</th>
+            </tr>
+            {% for timbre in timbres %}
+                <tr>
+                    <td>{{ timbre.nom }}</td>
+                    <td>{{ timbre.date_creation }}</td>
+                    <td>{{ timbre.couleurs }}</td>
+                    <td>{{ timbre.tirage }}</td>
+                    <td>{{ timbre.dimensions }}</td>
+                    <td>{{ timbre.certifie ? 'oui' : 'non' }}</td>
+                    <td>{{ timbre.pays }}</td>
+                    <td><a href="{{ url_racine }}timbre/edit?timbre_id={{ timbre.id }}">Modifier</a></td>
+                    <td>
+                        <form action="{{ url_racine }}timbre/delete" method="post">
+                            <input type="hidden" name="id" value="{{ timbre.id }}">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>    
+    <a href="{{ url_racine }}timbre/create">Ajouter un timbre</a> 
+</main>
+
+{% endblock %}

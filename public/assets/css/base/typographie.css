@@ -1,0 +1,10 @@
+:root {
+    --police-titre: 'Playfair Display', serif;
+    --police-sous-titre: 'Avenir LT Std', sans-serif;
+    --police-texte-courant: 'Lato', sans-serif;
+    --police-xs: 0.8rem;
+    --police-s: 1rem;
+    --police-m: 1.5rem;
+    --police-l: 3rem;
+    --police-xl: 3.5rem;
+}

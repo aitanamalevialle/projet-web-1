@@ -1,0 +1,39 @@
+/* Variables de base */
+@import url(base/reset.css);
+@import url(base/couleur.css);
+@import url(base/typographie.css);
+@import url(base/rythme.css);
+@import url(base/general.css);
+
+/* Composantes */
+@import url(components/boutons.css);
+@import url(components/tableau.css);
+@import url(components/filtres.css);
+@import url(components/formulaire.css);
+@import url(components/tri.css);
+
+/* Éléments de mise en page réutilisables*/
+@import url(layout/menu.css);
+@import url(layout/grille.css);
+
+/* Exceptions spécifiques à des pages*/
+@import url(pages/accueil.css);
+@import url(pages/compte.css);
+@import url(pages/catalogue.css);
+@import url(pages/timbre.css);
+
+/* Importations polices */
+@font-face {
+    font-family: 'Avenir LT Std';
+    src: url('../font/AvenirLTStd/AvenirLTStd-Medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url('../font/Lato/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Playfair Display';
+    src: url('../font/PlayfairDisplay/PlayfairDisplay-Regular.ttf') format('truetype');
+}

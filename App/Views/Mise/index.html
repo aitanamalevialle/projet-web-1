@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Mes mises{% endblock %}
+
+{% block body %}
+
+<main class="compte">
+    <h1>Mon compte</h1>
+    <nav class="menu">
+        <ul>
+            {% if session.privilege == 1 %}
+            <li><a href="{{ url_racine }}utilisateur" role="menuitem" aria-haspopup="false">Utilisateurs</a></li>
+            {% else %}
+            <li><a href="{{ url_racine }}compte" role="menuitem" aria-haspopup="false">Mes infos</a></li>
+            <li><a href="{{ url_racine }}enchere" role="menuitem" aria-haspopup="false">Mes enchères</a></li>
+            <li><a href="{{ url_racine }}timbre" role="menuitem" aria-haspopup="false">Mes timbres</a></li>
+            <li><a href="{{ url_racine }}mise" role="menuitem" aria-haspopup="false">Mes mises</a></li>
+            <li><a href="{{ url_racine }}favoris" role="menuitem" aria-haspopup="false">Mes favoris</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <section>
+        <table class="tableau">
+            <tr>
+                <th>Date de début de l'enchère</th>
+                <th>Date de fin de l'enchère</th>
+                <th>Mise</th>
+            </tr>
+            {% for mise in mises %}
+                <tr>
+                    <td>{{ mise.date_debut }}</td>
+                    <td>{{ mise.date_fin }}</td>
+                    <td>{{ mise.prix_actuel }} $</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+</main>
+
+{% endblock %}

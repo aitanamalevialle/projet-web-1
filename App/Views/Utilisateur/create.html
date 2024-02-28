@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Création utilisateur{% endblock %}
+
+{% block body %}
+
+<main class="creation">
+    <section>
+        <h2>Création d'utilisateur</h2>
+        <form action="create" method="post">
+            <span class="error">{{ errors | raw }}</span>
+            <label for="nom">Nom (complet)</label>
+            <input type="text" name="nom" id="nom">
+            <label for="courriel">Courriel</label>
+            <input type="email" name="courriel" id="courriel" placeholder="exemple@gmail.com" value="{{utilisateur.courriel}}">
+            <label for="mot_de_passe">Mot de passe</label>
+            <input type="password" name="mot_de_passe" id="mot_de_passe">
+            {% if session.privilege == 1 %}
+            <label for="privilege_id">Privilège</label>
+            <select name="privilege_id" required>
+                <option value="">Sélectionner un privilège</option>
+                {% for privilege in privileges %}
+                    <option value="{{ privilege.id }}">{{ privilege.privilege }}</option>
+                {% endfor %}
+            </select>
+            </label> 
+            {% endif %}         
+            <button type="submit">Ajouter</button>
+        </form>
+        {% if session.privilege == 1 %}
+        <a href="{{ url_racine }}utilisateur">Afficher les utilisateurs</a>
+        {% endif %}
+    </section>
+</main>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Modification enchère{% endblock %}
+
+{% block body %}
+
+<main class="creation">
+    <section>
+        <h2>Modification d'enchère</h2>
+        <form action="update" method="post">
+            <span class="error">{{ errors | raw }}</span>
+            <input type="hidden" name="id" value="{{ enchere.id }}">
+            <label for="timbre_id">Timbre*</label>
+            <select name="timbre_id" required>
+                <option value="">Sélectionner un timbre</option>
+                {% for timbre in timbres %}
+                    <option value="{{ timbre.id }}" {% if timbre.id == enchere.timbre_id %} selected {% endif %}>{{ timbre.nom }}</option>
+                {% endfor %}
+            </select>  
+            <label for="date_debut">Début enchère*</label>
+            <input type="date" name="date debut" id="date_debut" value="{{ enchere.date_debut }}" required>
+            <label for="date_fin">Fin enchère*</label>
+            <input type="date" name="date fin" id="date_fin" value="{{ enchere.date_fin }}" required>
+            <label for="prix_plancher">Prix plancher*</label>
+            <input type="number" name="prix plancher" id="prix_plancher" value="{{ enchere.prix_plancher }}" required>
+            <label for="quantite">Quantité*</label>
+            <input type="number" name="quantite" id="quantite" value="{{ enchere.quantite }}" required>
+            <label for="coup_de_coeur">Coup de coeur*</label>
+            <select id="coup_de_coeur" name="coup_de_coeur" required>
+                <option value="" {% if enchere.coup_de_coeur is null %}selected{% endif %}>Sélectionner une réponse</option>
+                <option value="1" {% if enchere.coup_de_coeur == 1 %}selected{% endif %}>Oui</option>
+                <option value="0" {% if enchere.coup_de_coeur == 0 %}selected{% endif %}>Non</option>
+            </select>
+            <input type="hidden" name="utilisateur_id" value="{{ utilisateur_id }}">
+            <button type="submit">Enregistrer</button>
+        </form>
+    </section>
+</main>
+
+{% endblock %}

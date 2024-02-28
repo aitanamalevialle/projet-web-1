@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Mes enchères{% endblock %}
+
+{% block body %}
+
+<main class="compte">
+    <h1>Mon compte</h1>
+    <nav class="menu">
+        <ul>
+            {% if session.privilege == 1 %}
+            <li><a href="{{ url_racine }}utilisateur" role="menuitem" aria-haspopup="false">Utilisateurs</a></li>
+            {% else %}
+            <li><a href="{{ url_racine }}compte" role="menuitem" aria-haspopup="false">Mes infos</a></li>
+            <li><a href="{{ url_racine }}enchere" role="menuitem" aria-haspopup="false">Mes enchères</a></li>
+            <li><a href="{{ url_racine }}timbre" role="menuitem" aria-haspopup="false">Mes timbres</a></li>
+            <li><a href="{{ url_racine }}mise" role="menuitem" aria-haspopup="false">Mes mises</a></li>
+            <li><a href="{{ url_racine }}favoris" role="menuitem" aria-haspopup="false">Mes favoris</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <section>
+        <table class="tableau">
+            <tr>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Prix de départ</th>
+                <th>Quantité</th>
+                <th>Coup de coeur</th>
+                <th>Modifier</th>
+            </tr>
+            {% for enchere in encheres %}
+                <tr>
+                    <td>{{ enchere.date_debut }}</td>
+                    <td>{{ enchere.date_fin }}</td>
+                    <td>{{ enchere.prix_plancher }}</td>
+                    <td>{{ enchere.quantite }}</td>
+                    <td>{{ enchere.coup_de_coeur ? 'oui' : 'non' }}</td>
+                    <td><a href="{{ url_racine }}enchere/edit?enchere_id={{ enchere.id }}">Modifier</a></td>
+                    <td>
+                        <form action="{{ url_racine }}enchere/delete" method="post">
+                            <input type="hidden" name="id" value="{{ enchere.id }}">
+                            <button type="submit">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </section>
+    <a href="{{ url_racine }}enchere/create">Ajouter une enchère</a>
+</main>
+
+{% endblock %}

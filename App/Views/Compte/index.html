@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Stampee | Mes infos{% endblock %}
+
+{% block body %}
+
+<main class="compte">
+    <h1>Mon compte</h1>
+    <nav class="menu">
+        <ul>
+            {% if session.privilege == 1 %}
+            <li><a href="{{ url_racine }}utilisateur" role="menuitem" aria-haspopup="false">Utilisateurs</a></li>
+            {% else %}
+            <li><a href="{{ url_racine }}compte" role="menuitem" aria-haspopup="false">Mes infos</a></li>
+            <li><a href="{{ url_racine }}enchere" role="menuitem" aria-haspopup="false">Mes enchères</a></li>
+            <li><a href="{{ url_racine }}timbre" role="menuitem" aria-haspopup="false">Mes timbres</a></li>
+            <li><a href="{{ url_racine }}mise" role="menuitem" aria-haspopup="false">Mes mises</a></li>
+            <li><a href="{{ url_racine }}favoris" role="menuitem" aria-haspopup="false">Mes favoris</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <section>
+        {{ session.courriel }}
+    </section>
+</main>
+
+{% endblock %}
